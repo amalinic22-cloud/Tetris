@@ -19,10 +19,17 @@ class Block:
             self.cell_size -1, self.cell_size -1)
             pygame.draw.rect(screen, self.colors[self.id], tile_rect)
 
+            
+
     def move_down(self):
         tiles = self.cells[self.rotation_state]
         for tile in tiles:
-            tile.move_down()
+            if tile.row >= 19: 
+               return False
+        for tile in tiles:
+            tile.move_down() 
+        return True
+
 
     def move_right(self):
         tiles = self.cells[self.rotation_state]

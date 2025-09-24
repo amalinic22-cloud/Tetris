@@ -17,6 +17,7 @@ fall_speed = 60
 
 block = LBlock()
 
+
 while True:
     fall_time += clock.get_rawtime()
     clock.tick()
@@ -27,7 +28,7 @@ while True:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
-                block.move_down()
+                block.move_down() 
             elif event.key == pygame.K_LEFT:
                 block.move_left()
             elif event.key == pygame.K_RIGHT:
@@ -35,8 +36,12 @@ while True:
 
 
     if fall_time > fall_speed:
-        block.move_down()
         fall_time = 0
+        if not block.move_down():
+            block = LBlock()
+
+
+
     
 
     screen.fill(purple)
